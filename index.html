@@ -1,20 +1,29 @@
 <html>
 <head>
-	<title>Digital Signatures - HTML5 Canvas</title>
-</head>
-<link href="css/styles.css" rel="stylesheet"/>
+    <title>Digital Signatures - HTML5 Canvas</title>
 
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
 <body>
-	<canvas id="canvas" width="100%" height="25%">
-	</canvas>
-	
-	<input type="color" id="colorPicker" />
-	<button id="clear">Clear</button>
-	<button id="undo">Undo</button>
-	<button id="save">Save</button>
-	
-	<img id="preview"></div>
-	
-	<script src="js/main.js"></script>
+    <div class="signature-wrapper">
+        <h2>Use your mouse or touch-enabled device to create a signature.</h2>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas" width="1000" height="300"></canvas>
+        </div>
+        <div id="toolbar">
+            <input type="color" id="colorPicker" title="Choose the stroke color" />
+            <input type="number" value="1" id="strokeWidth" title="Choose the stroke width" />
+            <button id="clear" title="Clear the Canvas">Clear</button>
+            <button id="undo" title="Undo the last path, from mousedown to mouseup and everything in between.">Undo</button>
+            <button id="save" title="Save to disk">Save</button>
+        </div>
+    </div>
+
+    <div>
+        <h2>Preview:</h2>
+        <img id="preview" />
+    </div>
+    <script src="js/main.js"></script>
 </body>
 </html>
