@@ -2,13 +2,14 @@
     width: 90%;
     margin: 0 auto 0 auto;
 }
-.canvas-wrapper{
 
+.canvas-wrapper {
 }
+
 canvas {
     border: 4px solid grey;
     border-radius: 4px 4px 0 0;
-    width: 500px;
+    width: 100%;
     height: 150px;
 }
 
@@ -18,11 +19,33 @@ canvas {
     padding: 4px;
     border-radius: 0 0 4px 4px;
 }
-input[type=number]{
+
+input[type=number] {
     width: 50px;
 }
+
 #preview {
     width: 500px;
     height: 250px;
     border: 2px solid black;
+}
+
+.modal {
+    z-index: 98;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-container {
+    z-index:99;
+    margin: 16px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+    canvas {
+        border: 4px solid grey;
+        border-radius: 4px 4px 0 0;
+        width: 100%;
+        height: 150px;
+    }
 }

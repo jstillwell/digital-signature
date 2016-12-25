@@ -28,14 +28,33 @@ canvas.addEventListener('mousedown', mouseDown, false);
 canvas.addEventListener('mousemove', mouseMove, false);
 canvas.addEventListener('mouseup', mouseUp, false);
 //touch events
-canvas.addEventListener('touchstart', mouseDown, false);
-canvas.addEventListener('touchmove', mouseMove, false);
-canvas.addEventListener('touchend', mouseUp, false);
+canvas.addEventListener('touchstart', touchstart, false);
+canvas.addEventListener('touchmove', touchmove, false);
+canvas.addEventListener('touchend', touchend, false);
 
 let ctx = canvas.getContext("2d");
 ctx.fillStyle = ctx.strokeStyle = colorPicker.value;
 
 //event handlers
+function touchstart(e) {
+    e.preventDefault();
+    console.info('touch start',e);
+    isMouseDown = true;
+    drawDot(e.touches[0].clientX, e.touches[0].clientY);
+}
+function touchmove(e) {
+    e.preventDefault();
+    console.info('touch move', e);
+    if(isMouseDown){
+        let pos = getOffset(canvas, e.touches[0].clientX, e.touches[0].clientY);
+        draw(pos);
+    }
+}
+function touchend(e) {
+    e.preventDefault();
+    console.info('touch end',e);
+    mouseUp(e);
+}
 function mouseDown(e) {
     isMouseDown = true;
     drawDot(e.clientX, e.clientY);
@@ -69,7 +88,8 @@ function clearPaths() {
     currentPath = new Path(colorPicker.value);
 }
 function save() {
-    alert('this is just a test, do this part yourself');
+    let imgData = canvas.toDataURL();
+
 }
 function undo() {
     //remove the last item in the move stack and then update the canvas.
